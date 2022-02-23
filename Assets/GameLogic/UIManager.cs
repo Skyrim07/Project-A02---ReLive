@@ -8,12 +8,13 @@ using SKCell;
 public sealed class UIManager : MonoSingleton<UIManager>
 {
     public bool inUI = false;
-    private string[] levelNames = new string[] { "--- I. Prelude ---", "--- II. Relive ---" };
+    private string[] levelNames = new string[] { "--- Level 1 ---", "--- Level 2 ---", "--- Level 3 ---" };
 
     public Text levelText, convText, moveTextL, moveTextR;
     [SerializeField] Image convBox, tutImage;
     [SerializeField] RawImage cutsceneRI;
     [SerializeField] Animator menuPanel, helpPanel, cover, convAnim, convTextAnim, startAnim;
+    [SerializeField] GameObject levelSelect;
 
     private Color moveTextColorL, moveTextColorR;
     public Color moveTextColorEmpty;

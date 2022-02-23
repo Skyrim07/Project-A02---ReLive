@@ -22,9 +22,7 @@ public sealed class MapManager : MonoSingleton<MapManager>
 
     private void Start()
     {
-        SetEmptyGridColor();
-
-        //CommonUtils.InvokeAction(1f, () => { UpdateCellOccupancy(); });
+        //SetEmptyGridColor();
     }
 
     public void LoadMap(int level)
