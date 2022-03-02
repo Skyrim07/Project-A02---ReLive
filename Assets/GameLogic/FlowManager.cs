@@ -5,7 +5,7 @@ using UnityEngine;
 using SKCell;
 public sealed class FlowManager : MonoSingleton<FlowManager>
 {
-    public int maxLevelCount = 3;
+    public int maxLevelCount = 4;
 
     public int currentLevel = -1;
     public int currentGoalCount = 0;
@@ -55,6 +55,7 @@ public sealed class FlowManager : MonoSingleton<FlowManager>
             CommonUtils.InvokeAction(0.2f, () =>
             {
                 UIManager.instance.SetCover(false);
+                UIManager.instance.SetMoveTextCover(false);
                 InitializeLevel(level);
             });
         });

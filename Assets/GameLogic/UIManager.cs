@@ -8,12 +8,12 @@ using SKCell;
 public sealed class UIManager : MonoSingleton<UIManager>
 {
     public bool inUI = false;
-    private string[] levelNames = new string[] { "--- Level 1 ---", "--- Level 2 ---", "--- Level 3 ---" };
+    private string[] levelNames = new string[] { "--- Level 1 ---", "--- Level 2 ---", "--- Level 3 ---", "--- Level 4 ---" };
 
     public Text levelText, convText, moveTextL, moveTextR;
     [SerializeField] Image convBox, tutImage;
     [SerializeField] RawImage cutsceneRI;
-    [SerializeField] Animator menuPanel, helpPanel, cover, convAnim, convTextAnim, startAnim;
+    [SerializeField] Animator menuPanel, helpPanel, cover, moveTextCover, convAnim, convTextAnim, startAnim;
     [SerializeField] GameObject levelSelect;
 
     private Color moveTextColorL, moveTextColorR;
@@ -150,7 +150,10 @@ public sealed class UIManager : MonoSingleton<UIManager>
     {
         cover.SetBool("Appear", on);
     }
-
+    public void SetMoveTextCover(bool on)
+    {
+        moveTextCover.SetBool("Appear", on);
+    }
     public void ReturnToMenu()
     {
         SKAudioManager.instance.PlaySound("click");
@@ -174,20 +177,20 @@ public sealed class UIManager : MonoSingleton<UIManager>
         if (FlowManager.instance.currentMoveCountL <= 0)
         {
             moveTextL.color = moveTextColorEmpty;
-           // moveTextR.color = Color.white;
+            moveTextR.color = Color.white;
         }
         if (FlowManager.instance.currentMoveCountR <= 0)
         {
             moveTextR.color = moveTextColorEmpty;
-            //moveTextL.color = Color.white;
+            moveTextL.color = Color.white;
         }
 
-        //inUI = true;
-        //SetCover(true);
-        //CommonUtils.InvokeAction(1f, () =>
-        //{
-        //    FlowManager.instance.ReloadLevel();
-        //});
+        inUI = true;
+        SetMoveTextCover(true);
+        CommonUtils.InvokeAction(1f, () =>
+        {
+            FlowManager.instance.ReloadLevel();
+        });
     }
 }
 
